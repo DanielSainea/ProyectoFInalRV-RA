@@ -110,6 +110,7 @@ public class Duck : MonoBehaviour
     }
     public void endHit()
     {
+           Debug.Log("END HIT");
         GetComponent<Animator>().Play("fall");
         if (hp <= 0)
         {
@@ -130,3 +131,4 @@ public class Duck : MonoBehaviour
         GetComponent<Animator>().Play("hit");
     }
 }
+
