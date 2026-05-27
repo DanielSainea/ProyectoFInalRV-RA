@@ -183,15 +183,15 @@ public class GameController : MonoBehaviour
             {
                 s = ComController.spCom.ReadLine();
                 string[] proArr = s.Split(","); // [x,y] - x: trigger , y : sensor state
-                //trigerState = int.Parse(proArr[0]);
-                 if (Input.GetButtonDown("Jump"))
-                {
-                    print("Disparo");
-                    trigerState=1 ;
-                }
-                else{
-                    trigerState=0;
-                }
+                trigerState = int.Parse(proArr[0]);
+                // if (Input.GetButtonDown("Jump"))
+                //{
+                  //  print("Disparo");
+                    //trigerState=1 ;
+                //}
+                //else{
+                  //  trigerState=0;
+                //}
                 sensorState = int.Parse(proArr[1]);
 
                 delayShoot -= Time.deltaTime;

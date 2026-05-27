@@ -167,7 +167,7 @@ MonoBehaviour:
   soundTalk: {fileID: 8300000, guid: 2c4752416371dba4aa5d12a7e5f05f1e, type: 3}
   white_circle: {fileID: 116745728734896173}
   type: 2
-  score: 300
+  score: 250
   hp: 4
   speed: 10
 --- !u!82 &2940617195943624411
