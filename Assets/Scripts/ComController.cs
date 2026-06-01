@@ -16,7 +16,7 @@ public class ComController : MonoBehaviour
     public static SerialPort spCom;
     public Dropdown dropBoxPort;
     public Text lbMsg;
-    public int readTimeOut = 500; // wait time out : 500ms
+    public int readTimeOut = 50; // wait time out : 500ms
    
     // Start is called before the first frame update
     void Start()
@@ -30,10 +30,13 @@ public class ComController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+   private void OnDestroy()
+{
+    if (spCom != null && spCom.IsOpen)
     {
         spCom.Close();
     }
+}
     // Create A Port
     public void CreatePortWithCallback(Action act)
     {
@@ -57,10 +60,11 @@ public class ComController : MonoBehaviour
                         Debug.Log(value + " ABIERTO!");
                     }
                 }
-                catch
-                {
-                    lbMsg.text = "ERROR DE PUERTO!";
-                }
+              catch (Exception e)
+{
+    Debug.LogError(e.ToString());
+    lbMsg.text = "ERROR DE PUERTO!";
+}
             }
         }
 

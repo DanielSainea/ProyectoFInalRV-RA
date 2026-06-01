@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         duckArr = new List<Duck>();
         HideBlackScreen();
         gameOverLayer.SetActive(false);
@@ -82,7 +83,7 @@ public class GameController : MonoBehaviour
     public void AddNewBird()
     {
         //Debug.Log("new bird");
-        int k = Random.Range(0, duckInstanceArr.Count - 1);
+        int k = Random.Range(0, duckInstanceArr.Count);
         Duck duck = Instantiate(duckInstanceArr[k], gameLayer.transform).GetComponent<Duck>();
         duckArr.Add(duck);
         duck.randomFly();
@@ -148,6 +149,8 @@ public class GameController : MonoBehaviour
     float eTime = 0;
     void Update()
     {
+     
+
         if (gameStatus < 0)
             return;
         eTime += Time.deltaTime;
@@ -181,7 +184,19 @@ public class GameController : MonoBehaviour
         {
             try
             {
-                s = ComController.spCom.ReadLine();
+                if (ComController.spCom.BytesToRead > 0)
+{
+
+    while (ComController.spCom.BytesToRead > 0)
+{
+    s = ComController.spCom.ReadLine();
+}
+    s = ComController.spCom.ReadLine();
+}
+else
+{
+    return;
+}
                 string[] proArr = s.Split(","); // [x,y] - x: trigger , y : sensor state
                 trigerState = int.Parse(proArr[0]);
                 // if (Input.GetButtonDown("Jump"))
